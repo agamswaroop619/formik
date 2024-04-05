@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { schema } from "../schema";
 
-const onSubmit = () => {
+const onSubmit = (values, actions) => {
   console.log("submitted");
 };
 export default function BasicForm() {
@@ -16,6 +16,8 @@ export default function BasicForm() {
     validationSchema: schema,
     onSubmit,
   });
+
+  console.log(formik.errors);
 
   return (
     <div style={styles.formContainer}>
@@ -31,6 +33,11 @@ export default function BasicForm() {
             onChange={formik.handleChange}
             style={styles.input}
           />
+          {formik.errors.name && formik.touched.name ? (
+            <p className="error">{formik.errors.name}</p>
+          ) : (
+            <p />
+          )}
         </div>
         <div style={styles.formGroup}>
           <label htmlFor="email">E-Mail:</label>
@@ -42,6 +49,11 @@ export default function BasicForm() {
             onChange={formik.handleChange}
             style={styles.input}
           />
+          {formik.errors.email && formik.touched.email ? (
+            <p className="error">{formik.errors.email}</p>
+          ) : (
+            <p />
+          )}
         </div>
         <div style={styles.formGroup}>
           <label htmlFor="password">Password:</label>
@@ -53,6 +65,11 @@ export default function BasicForm() {
             onChange={formik.handleChange}
             style={styles.input}
           />
+          {formik.errors.password && formik.touched.password ? (
+            <p className="error">{formik.errors.password}</p>
+          ) : (
+            <p />
+          )}
         </div>
         <div style={styles.formGroup}>
           <label htmlFor="confirmpassword">Confirm Password:</label>
@@ -64,8 +81,17 @@ export default function BasicForm() {
             onChange={formik.handleChange}
             style={styles.input}
           />
+          {formik.errors.confirmpassword && formik.touched.confirmpassword ? (
+            <p className="error">{formik.errors.confirmpassword}</p>
+          ) : (
+            <p />
+          )}
         </div>
-        <button type="submit" style={styles.submitBtn}>
+        <button
+          type="submit"
+          disabled={formik.isSubmitting}
+          style={styles.submitBtn}
+        >
           Submit
         </button>
       </form>

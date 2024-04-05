@@ -8,7 +8,7 @@ export const schema = object({
   password: string()
     .matches(
       passwordRules,
-      "Password must contain 1 Upper Case Letter, 1 Lower Case letter and 1 Digit "
+      "Password must contain 1 Upper Case Letter, 1 Lower Case letter and 1 Digit"
     )
     .required("Required"),
   confirmpassword: string()
