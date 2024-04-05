@@ -1,6 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
+import { schema } from "../schema";
 
+const onSubmit = () => {
+  console.log("submitted");
+};
 export default function BasicForm() {
   const formik = useFormik({
     initialValues: {
@@ -9,6 +13,8 @@ export default function BasicForm() {
       password: "",
       confirmpassword: "",
     },
+    validationSchema: schema,
+    onSubmit,
   });
 
   return (
