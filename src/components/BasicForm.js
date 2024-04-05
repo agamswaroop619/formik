@@ -18,6 +18,7 @@ export default function Basicform() {
         <input
           id="name"
           type="text"
+          placeholder="Vinsmoke Sanji"
           value={formik.values.name}
           onChange={formik.handleChange}
         />
@@ -25,13 +26,15 @@ export default function Basicform() {
         <input
           id="email"
           type="text"
+          placeholder="sanjicook@email.com"
           value={formik.values.email}
           onChange={formik.handleChange}
         />
         <label htmlFor="name">Password:</label>
         <input
           id="password"
-          type="text"
+          type="password"
+          placeholder="********"
           value={formik.values.password}
           onChange={formik.handleChange}
         />
@@ -39,6 +42,7 @@ export default function Basicform() {
         <input
           id="confirmpassword"
           type="text"
+          placeholder="********"
           value={formik.values.confirmpassword}
           onChange={formik.handleChange}
         />
